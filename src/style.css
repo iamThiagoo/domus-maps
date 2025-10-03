@@ -11,3 +11,12 @@
 * {
   font-family: 'Poppins', sans-serif !important;
 }
+
+.gmnoprint,
+.gm-style-cc {
+  display: none !important;
+}
+
+.btn-scale {
+  @apply transform transition-all duration-300 ease-in-out hover:opacity-95 active:scale-95;
+}
