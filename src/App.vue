@@ -141,7 +141,7 @@
 
   const onClose = async () => {
     await nextTick()
-    open.value = false
+    open.value = true
     bottomSheet.value?.snapToPoint(0)
     fullSnapped.value = false
   }

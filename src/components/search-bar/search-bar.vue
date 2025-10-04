@@ -130,6 +130,7 @@
     bairroLocation.value = ''
     searchStore.clearSearch()
     searchStore.clearBairroSearch()
+    toggleFilters()
   }
 </script>
 

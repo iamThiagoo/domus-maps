@@ -14,6 +14,7 @@
   const mapDiv = ref(null)
 
   const props = defineProps(['selectedPoint'])
+  const emit = defineEmits(['mapReady'])
 
   watch(
     () => props.selectedPoint,
@@ -47,8 +48,10 @@
       streetViewControl: false,
       fullscreenControl: false,
       zoomControl: true,
+      gestureHandling: 'greedy',
     })
 
+    emit('mapReady', map)
     const directionsService = new google.maps.DirectionsService()
     const directionsRenderer = new google.maps.DirectionsRenderer({ map })
 
@@ -56,32 +59,44 @@
       const marker = new google.maps.Marker({
         position: { lat: ponto.latitude, lng: ponto.longitude },
         map,
-        title: ponto.nome,
+        title: ponto.nome
       })
 
       const infoWindowContent = document.createElement('div')
       infoWindowContent.className = 'pb-1 px-1 max-w-sm'
+      const streetViewUrl = `https://maps.googleapis.com/maps/api/streetview?size=250x120&location=${ponto.latitude},${ponto.longitude}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
 
       infoWindowContent.innerHTML = `
-      <h3 class="mb-2 text-sm font-semibold text-gray-800 truncate">${ponto.nome}</h3>
-      <p class="mb-2 text-xs leading-relaxed text-gray-600">
-        ${ponto.endereco}, ${ponto.numero}<br/>
-        ${ponto.bairro} - CEP ${ponto.cep}
-      </p>
-      <a href="tel:${ponto.telefone.replace(/\D/g, '')}" 
-        class="block mb-2 text-xs font-medium text-blue-600 outline-none hover:text-blue-700">
-        ${ponto.telefone}
-      </a>
-      <div class="flex gap-2 mt-3">
-        <button class="flex-1 px-3 py-1.5 text-xs font-medium text-white bg-green-600 rounded shadow text-nowrap rota-btn hover:bg-green-700">
-          Ver rota
-        </button>
-        <a href="${ponto.mapsLink}" target="_blank" rel="noopener noreferrer"
-          class="flex-1 px-3 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded shadow text-nowrap hover:bg-blue-700">
-          Google Maps
-        </a>
-      </div>
-    `
+        <div class="relative max-w-sm px-1 pb-1">
+          <img 
+            src="${streetViewUrl}" 
+            alt="Foto do local" 
+            class="mb-2 w-full h-[50px] object-cover rounded"
+            loading="lazy"
+          />
+          <h3 class="mb-2 text-sm font-semibold text-gray-800 truncate">${ponto.nome}</h3>
+
+          <p class="mb-2 text-xs leading-relaxed text-gray-600">
+            ${ponto.endereco}, ${ponto.numero}<br/>
+            ${ponto.bairro} - CEP ${ponto.cep}
+          </p>
+
+          <a href="tel:${ponto.telefone.replace(/\D/g, '')}" 
+            class="block mb-2 text-xs font-medium text-blue-600 outline-none hover:text-blue-700">
+            ${ponto.telefone}
+          </a>
+
+          <div class="flex gap-2 mt-3">
+            <button class="flex-1 px-3 py-1.5 text-xs font-medium text-white bg-green-600 rounded shadow text-nowrap rota-btn hover:bg-green-700">
+              Ver rota
+            </button>
+            <a href="${ponto.mapsLink}" target="_blank" rel="noopener noreferrer"
+              class="flex-1 px-3 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded shadow text-nowrap hover:bg-blue-700">
+              Google Maps
+            </a>
+          </div>
+        </div>
+      `
 
       const info = new google.maps.InfoWindow({ content: infoWindowContent })
 
