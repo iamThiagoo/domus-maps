@@ -1,19 +1,20 @@
 <template>
-  <div class="w-full mx-auto border border-gray-50 bg-white rounded-2xl shadow-md overflow-hidden">
+  <div class="w-full mx-auto overflow-hidden bg-white border shadow-md border-gray-50 rounded-2xl">
     <div class="px-3 py-4">
-      <h2 class="text-base font-bold text-slate-800 mb-2">
+      <h2 class="mb-2 text-base font-bold text-slate-800">
         <div class="flex gap-1 h-10 w-10 mb-1.5 items-center justify-center rounded-xl bg-sky-100">
           <MapPin class="size-6 text-sky-900" />
         </div>
-        Ponto de Coleta Central
+        {{ ponto.nome }}
       </h2>
 
-      <p class="text-gray-600 mb-1 text-xs">
-        <span class="font-semibold">Endereço:</span> Rua Exemplo, 123 - Centro, 95000-000
+      <p class="mb-1 text-xs text-gray-600">
+        <span class="font-semibold">Endereço:</span> {{ ponto.endereco }}, {{ ponto.numero }} -
+        {{ ponto.bairro }}, {{ ponto.cep }}
       </p>
 
-      <p class="text-gray-600 mb-3 text-xs">
-        <span class="font-semibold">Contato:</span> (54) 1234-5678
+      <p class="mb-3 text-xs text-gray-600">
+        <span class="font-semibold">Contato:</span> {{ ponto.telefone }}
       </p>
 
       <div class="flex flex-row gap-3">
@@ -41,15 +42,23 @@
   import { MapPin } from 'lucide-vue-next'
 
   const emit = defineEmits<{
-    (e: 'select'): void
+    (e: 'select', ponto: any): void
     (e: 'open-google-maps'): void
   }>()
 
+  const props = defineProps<{
+    ponto: any
+  }>()
+
   const handleSelect = () => {
-    emit('select')
+    emit('select', props.ponto)
   }
 
   const handleOpenGoogleMaps = () => {
-    emit('open-google-maps')
+    if (props.ponto.mapsLink) {
+      window.open(props.ponto.mapsLink, '_blank')
+    } else {
+      alert('Link do Google Maps não disponível para este ponto.')
+    }
   }
 </script>

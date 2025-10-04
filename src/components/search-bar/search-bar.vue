@@ -1,10 +1,10 @@
 <template>
-  <div class="px-4 z-50">
+  <div class="z-50 px-4">
     <div class="max-w-2xl mx-auto">
-      <div class="bg-white rounded-full shadow-lg py-2 px-4 flex items-center gap-4">
+      <div class="flex items-center gap-4 px-4 py-2 bg-white rounded-full shadow-lg">
         <button
-          class="flex-shrink-0 p-2 hover:bg-gray-100 rounded-full transition-colors"
-          aria-label="Voltar"
+          class="flex-shrink-0 p-2 transition-colors rounded-full hover:bg-gray-100"
+          aria-label="Buscar"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +24,7 @@
 
         <input
           @focus="$emit('focus')"
+          v-model="search"
           type="text"
           placeholder="Buscar por pontos de coleta"
           class="outline-none flex-1 min-w-0 text-[13px] md:text-sm items-center justify-center text-gray-700"
@@ -31,7 +32,7 @@
 
         <button
           @click="toggleFilters"
-          class="flex-shrink-0 p-2 hover:bg-gray-100 rounded-full transition-colors"
+          class="flex-shrink-0 p-2 transition-colors rounded-full hover:bg-gray-100"
           aria-label="Filtros"
         >
           <svg
@@ -57,19 +58,19 @@
 
       <transition name="slide-fade">
         <div v-if="showFilters" class="mt-4 bg-white rounded-2xl !z-50 shadow-lg px-5 pt-5 pb-2">
-          <UFormField label="Bairro" class="w-full mb-4">
+          <UFormField label="Bairro" class="w-full mb-4 outline-none">
             <UInput placeholder="Digite o bairro" class="w-full" v-model="bairroLocation" />
           </UFormField>
 
           <button
             @click="applyFilters"
-            class="w-full bg-blue-600 text-sm text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            class="w-full py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700 btn-scale"
           >
             Aplicar Filtros
           </button>
           <button
-            @click="applyFilters"
-            class="w-full my-2 text-slate-800 text-sm py-2 rounded-lg font-medium transition-colors"
+            @click="resetFilters"
+            class="w-full py-2 my-2 text-sm font-medium transition-colors rounded-lg text-slate-800 btn-scale"
           >
             Resetar Filtros
           </button>
@@ -81,9 +82,12 @@
 
 <script setup lang="ts">
   import { ref, watch, nextTick } from 'vue'
+  import { useSearchStore } from '../../store/search'
 
-  const bairroLocation = ref('')
   const showFilters = ref(false)
+  const searchStore = useSearchStore()
+  const search = ref(searchStore.search)
+  const bairroLocation = ref(searchStore.bairroSearch)
   const emit = defineEmits<{
     (e: 'toggle-filters'): void
     (e: 'focus'): void
@@ -102,6 +106,14 @@
     { deep: true }
   )
 
+  watch(search, newVal => {
+    searchStore.setSearch(newVal)
+  })
+
+  watch(bairroLocation, newVal => {
+    searchStore.setBairroSearch(newVal)
+  })
+
   const toggleFilters = async () => {
     await nextTick()
     showFilters.value = !showFilters.value
@@ -110,6 +122,14 @@
 
   const applyFilters = () => {
     showFilters.value = false
+    emit('focus')
+  }
+
+  const resetFilters = () => {
+    search.value = ''
+    bairroLocation.value = ''
+    searchStore.clearSearch()
+    searchStore.clearBairroSearch()
   }
 </script>
 
