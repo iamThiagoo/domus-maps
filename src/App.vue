@@ -45,7 +45,7 @@
               :ponto="point"
               @select="
                 item => {
-                  ;(onClose(), handleSelected(item))
+                  ;(onClose(), handleClosed(), handleSelected(item))
                 }
               "
             />
@@ -141,7 +141,7 @@
 
   const onClose = async () => {
     await nextTick()
-    open.value = true
+    open.value = false
     bottomSheet.value?.snapToPoint(0)
     fullSnapped.value = false
   }
