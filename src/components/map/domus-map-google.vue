@@ -64,16 +64,9 @@
 
       const infoWindowContent = document.createElement('div')
       infoWindowContent.className = 'pb-1 px-1 max-w-sm'
-      const streetViewUrl = `https://maps.googleapis.com/maps/api/streetview?size=250x120&location=${ponto.latitude},${ponto.longitude}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`
 
       infoWindowContent.innerHTML = `
         <div class="relative max-w-sm px-1 pb-1">
-          <img 
-            src="${streetViewUrl}" 
-            alt="Foto do local" 
-            class="mb-2 w-full h-[50px] object-cover rounded"
-            loading="lazy"
-          />
           <h3 class="mb-2 text-sm font-semibold text-gray-800 truncate">${ponto.nome}</h3>
 
           <p class="mb-2 text-xs leading-relaxed text-gray-600">

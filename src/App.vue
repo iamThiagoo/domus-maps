@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="h-[100dvh] overflow-hidden">
     <UApp :toaster="{ position: 'top-center' }">
       <!--  -->
       <transition name="fade" appear @after-leave="onSplashLeave">
