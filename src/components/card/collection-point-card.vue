@@ -9,8 +9,8 @@
       </h2>
 
       <p class="mb-1 text-xs text-gray-600">
-        <span class="font-semibold">Endereço:</span> {{ ponto.endereco }}, {{ ponto.numero }} -
-        {{ ponto.bairro }}, {{ ponto.cep }}
+        <span class="font-semibold">Endereço:</span> {{ ponto.endereco }}, {{ ponto.numero_endereco }} -
+        {{ ponto.nome_bairro }}, {{ ponto.cep }}
       </p>
 
       <p class="mb-3 text-xs text-gray-600">

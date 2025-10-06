@@ -9,6 +9,7 @@
 
       <!--  -->
       <DomusMapGoogle
+        :points="state.filteredPoints"
         :selected-point="selectedPoint"
         v-show="!showSplash"
         class="absolute inset-0 z-0"
@@ -58,15 +59,15 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, nextTick, onMounted, ref, watch } from 'vue'
+  import { computed, nextTick, onBeforeMount, onMounted, reactive, ref, watch } from 'vue'
   import BottomSheet from '@douxcode/vue-spring-bottom-sheet'
   import '@douxcode/vue-spring-bottom-sheet/dist/style.css'
   import CollectionPointCard from './components/card/collection-point-card.vue'
   import DomusMapGoogle from './components/map/domus-map-google.vue'
   import SplashScreen from './components/splash-screen/splash-screen.vue'
   import SearchBar from './components/search-bar/search-bar.vue'
-  import { points as allPoints } from './mocks/pontos'
   import { useSearchStore } from './store/search'
+  import { usePontosColetaApi } from './api/pontos-coleta'
 
   const bottomSheet = ref<InstanceType<typeof BottomSheet>>()
 
@@ -75,12 +76,16 @@
   const fullSnapped = ref(false)
   const showSplash = ref(true)
   const selectedPoint = ref(null)
+  const state = reactive({
+    allPoints: [] as any[],
+    filteredPoints: [] as any[] 
+  })
 
   const searchStore = useSearchStore()
   const search = computed(() => searchStore.search)
   const bairroLocation = ref(searchStore.bairroSearch)
   const pointsCount = computed(() => points.value.length)
-  const points = ref([...allPoints])
+  const points = computed(() => state.filteredPoints)
 
   const headerText = computed(() => {
     const count = pointsCount.value
@@ -95,14 +100,16 @@
       const term = searchTerm?.toLowerCase().trim() || ''
       const bairroTerm = bairro?.toLowerCase().trim() || ''
 
-      points.value = allPoints.filter(p => {
+      state.filteredPoints = state.allPoints.filter(p => {
         const matchSearch =
-          !term ||
-          p.nome.toLowerCase().includes(term) ||
-          p.endereco.toLowerCase().includes(term) ||
-          p.bairro.toLowerCase().includes(term)
+          (!term ||
+            (p.nome?.toLowerCase() || '').includes(term) ||
+            (p.endereco?.toLowerCase() || '').includes(term) ||
+            (p.bairro?.toLowerCase() || '').includes(term)) &&
+          p.ativo === true
 
-        const matchBairro = !bairroTerm || p.bairro.toLowerCase().includes(bairroTerm)
+        const matchBairro =
+          !bairroTerm || (p.bairro?.toLowerCase() || '').includes(bairroTerm)
 
         return matchSearch && matchBairro
       })
@@ -159,10 +166,24 @@
     }
   }
 
+  const fetchPoints = async () => {
+    try {
+      state.allPoints = await usePontosColetaApi().getAll()
+      state.filteredPoints = state.allPoints.filter(p => p.ativo === true)
+    } catch (error) {
+      console.error('Failed to fetch points data', error)
+    }
+  }
+
   onMounted(() => {
     setTimeout(() => {
       showSplash.value = false
     }, 3500)
     checkIsMobile()
+  })
+
+  onBeforeMount(async() => {
+    await fetchPoints()
+    
   })
 </script>
