@@ -44,9 +44,9 @@ const updateMarkers = (points, google, directionsService, directionsRenderer) =>
           ${ponto.nome_bairro} - CEP ${ponto.cep}
         </p>
 
-        <a href="tel:${ponto.telefone.replace(/\D/g, '')}" 
+        <a href="tel:${ponto.telefone?.replace(/\D/g, '')}" 
           class="block mb-2 text-xs font-medium text-blue-600 outline-none hover:text-blue-700">
-          ${ponto.telefone}
+          ${ponto.telefone || 'Sem contato'}
         </a>
 
         <div class="flex gap-2 mt-3">
