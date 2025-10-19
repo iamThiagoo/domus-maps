@@ -3,7 +3,7 @@
     <div class="max-w-2xl mx-auto">
       <div class="flex items-center gap-4 px-4 py-2 bg-white rounded-full shadow-lg">
         <button
-          class="flex-shrink-0 p-2 transition-colors rounded-full hover:bg-gray-100"
+          class="flex-shrink-0 p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100"
           aria-label="Buscar"
         >
           <svg
@@ -32,7 +32,7 @@
 
         <button
           @click="toggleFilters"
-          class="flex-shrink-0 p-2 transition-colors rounded-full hover:bg-gray-100"
+          class="flex-shrink-0 p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100"
           aria-label="Filtros"
         >
           <svg
@@ -58,7 +58,7 @@
 
       <transition name="slide-fade">
         <div v-if="showFilters" class="mt-4 bg-white rounded-2xl !z-50 shadow-lg px-5 pt-5 pb-2">
-          <UFormField label="Bairro" class="w-full mb-4 outline-none">
+          <UFormField label="Bairro" class="w-full mb-4 text-gray-600 outline-none">
             <UInput placeholder="Digite o bairro" class="w-full" v-model="bairroLocation" />
           </UFormField>
 

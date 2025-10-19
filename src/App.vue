@@ -34,7 +34,7 @@
         @dragging-up="handleDraggingUp"
         class="dark:bg-gray-800"
       >
-        <h1 class="flex items-center justify-center mb-5 text-sm font-medium text-center gap-x-2">
+        <h1 class="flex items-center justify-center mb-5 text-sm font-medium text-center text-gray-600 gap-x-2">
           {{ headerText }}
         </h1>
 
@@ -155,6 +155,7 @@
 
   const handleClosed = () => {
     fullSnapped.value = false
+    bottomSheet.value?.close()
     setTimeout(() => {
       bottomSheet.value?.open()
     }, 500)

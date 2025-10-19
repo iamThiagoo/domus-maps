@@ -6,6 +6,7 @@
 import { ref, onMounted, watch } from 'vue'
 import { Loader } from '@googlemaps/js-api-loader'
 import { styles } from '@/utils/map-styles'
+import { getMapsLink } from '../../utils/helpers'
 
 let map = null
 let activeInfoWindow = null
@@ -52,7 +53,7 @@ const updateMarkers = (points, google, directionsService, directionsRenderer) =>
           <button class="flex-1 px-3 py-1.5 text-xs font-medium text-white bg-green-600 rounded shadow text-nowrap rota-btn hover:bg-green-700">
             Ver rota
           </button>
-          <a href="${ponto.mapsLink}" target="_blank" rel="noopener noreferrer"
+          <a href="${getMapsLink(ponto)}" target="_blank" rel="noopener noreferrer"
             class="flex-1 px-3 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded shadow text-nowrap hover:bg-blue-700">
             Google Maps
           </a>

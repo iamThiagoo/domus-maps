@@ -40,6 +40,7 @@
 <script lang="ts" setup>
   import { Map } from 'lucide-vue-next'
   import { MapPin } from 'lucide-vue-next'
+  import { getMapsLink } from '../../utils/helpers';
 
   const emit = defineEmits<{
     (e: 'select', ponto: any): void
@@ -55,10 +56,6 @@
   }
 
   const handleOpenGoogleMaps = () => {
-    if (props.ponto.mapsLink) {
-      window.open(props.ponto.mapsLink, '_blank')
-    } else {
-      alert('Link do Google Maps não disponível para este ponto.')
-    }
+    window.open(getMapsLink(props.ponto), '_blank')
   }
 </script>
