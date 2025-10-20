@@ -30,7 +30,6 @@
           :snap-points="['13%', '80%']"
           @closed="handleClosed"
           @dragging-up="handleDraggingUp"
-          class="dark:bg-gray-800"
         >
           <h1 class="flex items-center justify-center mb-5 text-sm font-medium text-center text-gray-600 gap-x-2">
             {{ headerText }}
@@ -56,12 +55,12 @@
       <div v-else class="bg-yellow-400">
         <div class="container grid items-center justify-center flex-1 w-full h-screen grid-cols-2 px-4 pr-10 mx-auto overflow-auto bg-white" style="grid-template-columns: .8fr .5fr;">
           <div
-            class="flex flex-col flex-1 w-full h-[95vh] p-5 bg-white dark:bg-gray-900 dark:border-gray-700"
+            class="flex flex-col flex-1 w-full h-[95vh] p-5 !bg-white"
           >
             <div class="grid items-center justify-between w-full grid-cols-2 pb-6 mb-4 border-b border-gray-300">
               <div>
                 <img src="/logo.png" alt="Domus Logo" class="w-24 mb-2" />
-                <h2 class="mb-0 text-2xl font-semibold text-gray-800 dark:text-gray-100">
+                <h2 class="mb-0 text-2xl font-semibold text-gray-800">
                   Pontos de Coleta
                 </h2>
                 <div class="flex items-center justify-between text-sm text-gray-500">
