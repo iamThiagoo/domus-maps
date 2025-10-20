@@ -9,11 +9,14 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     CollectionPointCard: typeof import('./src/components/card/collection-point-card.vue')['default']
+    CollectionPointCardDesktop: typeof import('./src/components/card/collection-point-card-desktop.vue')['default']
     DomusMap: typeof import('./src/components/map/domus-map.vue')['default']
     DomusMapGoogle: typeof import('./src/components/map/domus-map-google.vue')['default']
+    DomusMapGoogleDesktop: typeof import('./src/components/map/domus-map-google-desktop.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchBar: typeof import('./src/components/search-bar/search-bar.vue')['default']
+    SearchBarDesktop: typeof import('./src/components/search-bar/search-bar-desktop.vue')['default']
     SplashScreen: typeof import('./src/components/splash-screen/splash-screen.vue')['default']
     UApp: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
     UFormField: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/FormField.vue')['default']

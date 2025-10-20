@@ -1,7 +1,6 @@
 <template>
   <div v-if="isVisible" class="splash-screen">
     <div class="stripes-container">
-      <vue-particles id="tsparticles" class="particles" :options="particlesOptions" />
     </div>
 
     <div class="content">
@@ -52,22 +51,4 @@
       }
     }, 250)
   })
-
-  const particlesOptions = {
-    fpsLimit: 60,
-    interactivity: {
-      events: { onHover: { enable: true, mode: 'repulse' }, resize: true },
-      modes: { repulse: { distance: 100, duration: 0.4 } },
-    },
-    particles: {
-      color: { value: ['#FF6B35', '#FFB627', '#4CAF50', '#FF5252', '#FFA726'] },
-      links: { enable: true, distance: 120, opacity: 0.3, width: 1 },
-      move: { enable: true, speed: 2, outModes: { default: 'bounce' } },
-      number: { value: 120, density: { enable: true, area: 800 } },
-      opacity: { value: 0.6 },
-      shape: { type: 'circle' },
-      size: { value: { min: 2, max: 6 } },
-    },
-    detectRetina: true,
-  }
 </script>

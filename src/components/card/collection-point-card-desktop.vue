@@ -1,33 +1,33 @@
 <template>
-  <div class="w-full h-auto mx-auto overflow-hidden bg-white border shadow-md border-gray-50 rounded-2xl">
-    <div class="px-3 py-4">
-      <h2 class="mb-2 text-base font-bold text-slate-800">
+  <div class="w-full h-auto mx-auto overflow-hidden bg-white border border-gray-50 rounded-2xl">
+    <div class="py-2">
+      <h2 class="mb-2 text-sm font-bold text-slate-800">
         <div class="flex gap-1 h-10 w-10 mb-1.5 items-center justify-center rounded-xl bg-sky-100">
           <MapPin class="size-6 text-sky-900" />
         </div>
         {{ ponto.nome }}
       </h2>
 
-      <p class="mb-1 text-xs text-gray-600">
+      <p class="mb-1 text-[11px] text-gray-600">
         <span class="font-semibold">Endereço:</span> {{ ponto.endereco }}, {{ ponto.numero_endereco }} -
         {{ ponto.nome_bairro }}, {{ ponto.cep }}
       </p>
 
       <p class="mb-3 text-xs text-gray-600">
-        <span class="font-semibold">Contato:</span> {{ ponto.telefone }}
+        <span class="font-semibold">Contato:</span> {{ ponto.telefone ?? 'Não informado' }}
       </p>
 
       <div class="flex flex-row gap-3">
         <button
           @click.stop="handleSelect"
-          class="w-full bg-white gap-1.5 flex items-center justify-center border border-slate-600 text-slate-600 text-sm font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
+          class="w-full bg-white gap-1.5 flex items-center justify-center border border-slate-600 text-slate-600 text-xs font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
         >
           <Map class="size-5 text-slate-600" />
           Selecionar
         </button>
         <button
           @click.stop="handleOpenGoogleMaps"
-          class="w-full bg-white gap-1.5 flex items-center justify-center text-gray-500 text-nowrap border text-sm font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
+          class="w-full bg-white gap-1.5 flex items-center justify-center text-gray-500 text-nowrap border text-xs font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
         >
           <img src="/google-maps.png" class="size-5" />
           Google Maps
