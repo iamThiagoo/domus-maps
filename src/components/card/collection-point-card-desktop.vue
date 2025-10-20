@@ -2,8 +2,8 @@
   <div class="w-full h-auto mx-auto overflow-hidden bg-white border border-gray-50 rounded-2xl">
     <div class="py-2">
       <h2 class="mb-2 text-sm font-bold text-slate-800">
-        <div class="flex gap-1 h-10 w-10 mb-1.5 items-center justify-center rounded-xl bg-sky-100">
-          <MapPin class="size-6 text-sky-900" />
+        <div class="flex gap-1 h-8 w-8 mb-1.5 items-center justify-center rounded-xl bg-sky-100">
+          <img src="/map-marker.svg" />
         </div>
         {{ ponto.nome }}
       </h2>
@@ -39,7 +39,6 @@
 
 <script lang="ts" setup>
   import { Map } from 'lucide-vue-next'
-  import { MapPin } from 'lucide-vue-next'
   import { getMapsLink } from '../../utils/helpers';
 
   const emit = defineEmits<{

@@ -18,6 +18,7 @@ declare module 'vue' {
     SearchBar: typeof import('./src/components/search-bar/search-bar.vue')['default']
     SearchBarDesktop: typeof import('./src/components/search-bar/search-bar-desktop.vue')['default']
     SplashScreen: typeof import('./src/components/splash-screen/splash-screen.vue')['default']
+    SplashScreenAlternative: typeof import('./src/components/splash-screen/splash-screen-alternative.vue')['default']
     UApp: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
     UFormField: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/FormField.vue')['default']
     UInput: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Input.vue')['default']

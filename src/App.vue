@@ -3,7 +3,7 @@
     <UApp :toaster="{ position: 'top-center' }">
       <div v-if="isMobile">
         <transition name="fade" appear @after-leave="onSplashLeave">
-          <SplashScreen v-if="showSplash && isMobile" />
+          <SplashScreenAlternative v-if="showSplash && isMobile" />
         </transition>
         
         <DomusMapGoogle
@@ -109,7 +109,7 @@
   import CollectionPointCard from './components/card/collection-point-card.vue'
   import DomusMapGoogle from './components/map/domus-map-google.vue'
   import DomusMapGoogleDesktop from './components/map/domus-map-google-desktop.vue'
-  import SplashScreen from './components/splash-screen/splash-screen.vue'
+  import SplashScreenAlternative from './components/splash-screen/splash-screen-alternative.vue'
   import SearchBar from './components/search-bar/search-bar.vue'
   import { useSearchStore } from './store/search'
   import { usePontosColetaApi } from './api/pontos-coleta'

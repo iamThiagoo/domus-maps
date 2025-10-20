@@ -116,7 +116,6 @@
 }
 
 .loading-text {
-  font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
   display: flex;
@@ -298,10 +297,6 @@
 @media (max-width: 640px) {
   .logo {
     width: 200px;
-  }
-
-  .loading-text {
-    font-size: 1.25rem;
   }
 
   .progress-container {
