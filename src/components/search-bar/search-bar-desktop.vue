@@ -93,19 +93,6 @@
     (e: 'focus'): void
   }>()
 
-  const props = defineProps<{
-    change: any
-  }>()
-
-  watch(
-    () => props.change,
-    () => {
-      if (showFilters.value) return
-      showFilters.value = false
-    },
-    { deep: true }
-  )
-
   watch(search, newVal => {
     searchStore.setSearch(newVal)
   })
