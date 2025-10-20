@@ -7,7 +7,7 @@
         </transition>
         
         <DomusMapGoogle
-          :points="state.filteredPoints && isMobile"
+          :points="state.filteredPoints"
           :selected-point="selectedPoint"
           v-show="!showSplash"
           class="absolute inset-0 z-0"
@@ -92,7 +92,7 @@
           <!-- Mapa à direita -->
           <div class="relative flex items-center justify-center w-full h-[93vh]">
             <DomusMapGoogleDesktop
-              :points="state.filteredPoints && !isMobile"
+              :points="state.filteredPoints"
               :selected-point="selectedPoint"
               class="absolute inset-0 z-0"
             />
