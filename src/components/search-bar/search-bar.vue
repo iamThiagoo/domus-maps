@@ -1,7 +1,7 @@
 <template>
   <div class="z-50 px-4">
     <div class="max-w-2xl mx-auto">
-      <div class="flex items-center gap-4 px-4 py-2 bg-white rounded-full shadow-lg">
+      <div class="flex items-center gap-4 px-4 py-2 bg-[#F8FBFD] rounded-full shadow-lg">
         <button
           class="flex-shrink-0 p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100"
           aria-label="Buscar"

@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CollectionPointCard: typeof import('./src/components/card/collection-point-card.vue')['default']
     CollectionPointCardDesktop: typeof import('./src/components/card/collection-point-card-desktop.vue')['default']
+    CollectionPointDetails: typeof import('./src/components/card/collection-point-details.vue')['default']
     DomusMap: typeof import('./src/components/map/domus-map.vue')['default']
     DomusMapGoogle: typeof import('./src/components/map/domus-map-google.vue')['default']
     DomusMapGoogleDesktop: typeof import('./src/components/map/domus-map-google-desktop.vue')['default']
@@ -22,5 +23,6 @@ declare module 'vue' {
     UApp: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
     UFormField: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/FormField.vue')['default']
     UInput: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Input.vue')['default']
+    USeparator: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Separator.vue')['default']
   }
 }

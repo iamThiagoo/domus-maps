@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full h-auto mx-auto overflow-hidden bg-white border shadow-md border-gray-50 rounded-2xl">
+  <div
+    class="w-full h-auto mx-auto overflow-hidden bg-white border shadow-md border-gray-50 rounded-2xl"
+  >
     <div class="px-3 py-4">
       <h2 class="mb-2 text-base font-bold text-slate-800">
         <div class="flex gap-1 h-8 w-8 mb-1.5 items-center justify-center rounded-xl bg-sky-100">
@@ -9,12 +11,12 @@
       </h2>
 
       <p class="mb-1 text-xs text-gray-600">
-        <span class="font-semibold">Endereço:</span> {{ ponto.endereco }}, {{ ponto.numero_endereco }} -
-        {{ ponto.nome_bairro }}, {{ ponto.cep }}
+        <span class="font-semibold">Endereço:</span> {{ ponto.endereco }},
+        {{ ponto.numero_endereco }} - {{ ponto.nome_bairro }}, {{ ponto.cep }}
       </p>
 
       <p class="mb-3 text-xs text-gray-600">
-        <span class="font-semibold">Contato:</span> {{ ponto.telefone }}
+        <span class="font-semibold">Contato:</span> {{ ponto.telefone ?? 'Não informado' }}
       </p>
 
       <div class="flex flex-row gap-3">
@@ -39,7 +41,7 @@
 
 <script lang="ts" setup>
   import { Map } from 'lucide-vue-next'
-  import { getMapsLink } from '../../utils/helpers';
+  import { getMapsLink } from '../../utils/helpers'
 
   const emit = defineEmits<{
     (e: 'select', ponto: any): void

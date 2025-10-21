@@ -1,7 +1,6 @@
 <template>
   <div v-if="isVisible" class="splash-screen">
-    <div class="stripes-container">
-    </div>
+    <div class="stripes-container"></div>
 
     <div class="content">
       <div class="logo-container">

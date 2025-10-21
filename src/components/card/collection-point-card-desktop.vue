@@ -9,8 +9,8 @@
       </h2>
 
       <p class="mb-1 text-[11px] text-gray-600">
-        <span class="font-semibold">Endereço:</span> {{ ponto.endereco }}, {{ ponto.numero_endereco }} -
-        {{ ponto.nome_bairro }}, {{ ponto.cep }}
+        <span class="font-semibold">Endereço:</span> {{ ponto.endereco }},
+        {{ ponto.numero_endereco }} - {{ ponto.nome_bairro }}, {{ ponto.cep }}
       </p>
 
       <p class="mb-3 text-xs text-gray-600">
@@ -39,7 +39,7 @@
 
 <script lang="ts" setup>
   import { Map } from 'lucide-vue-next'
-  import { getMapsLink } from '../../utils/helpers';
+  import { getMapsLink } from '../../utils/helpers'
 
   const emit = defineEmits<{
     (e: 'select', ponto: any): void

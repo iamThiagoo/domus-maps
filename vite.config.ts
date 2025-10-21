@@ -18,11 +18,11 @@ export default defineConfig({
         },
         theme: {
           light: true,
-          dark: false
+          dark: false,
         },
         classStrategy: 'none',
         formField,
-        input
+        input,
       },
     } as NuxtUIOptions),
   ],

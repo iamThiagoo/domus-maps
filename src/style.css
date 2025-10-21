@@ -2,6 +2,10 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
 
+:root {
+  --vsbs-background: #f8fbfd;
+}
+
 .mapboxgl-ctrl-bottom-right,
 .mapboxgl-ctrl-top-right,
 .mapboxgl-ctrl-bottom-left {
@@ -125,7 +129,7 @@
 }
 
 .progress-container {
-  width: 300px;
+  width: 400px;
   height: 6px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
