@@ -42,7 +42,7 @@
               >
                 {{ headerText }}
               </h1>
-  
+
               <div :class="{ 'mt-5': !fullSnapped }">
                 <div class="flex flex-col gap-5 mb-6">
                   <CollectionPointCard
@@ -137,7 +137,7 @@
   const pointsCount = computed(() => points.value.length)
   const points = computed(() => state.filteredPoints)
   const bottomSheetContent = ref<HTMLElement | null>(null)
-  
+
   const open = ref(false)
   const isMobile = ref(false)
   const fullSnapped = ref(false)
@@ -208,11 +208,11 @@
     bottomSheet.value?.snapToPoint(1)
     fullSnapped.value = true
     setTimeout(() => {
-    if (bottomSheetContent.value) {
-      bottomSheetContent.value.scrollTop = 0
-      console.log('oiii')
-    }
-  }, 350)
+      if (bottomSheetContent.value) {
+        bottomSheetContent.value.scrollTop = 0
+        console.log('oiii')
+      }
+    }, 350)
   }
 
   const onClose = async () => {
@@ -242,11 +242,11 @@
       console.error('Failed to fetch points data', error)
     }
   }
-  
+
   onBeforeMount(async () => {
     await fetchPoints()
   })
-  
+
   onMounted(() => {
     setTimeout(() => {
       showSplash.value = false

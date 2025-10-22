@@ -1,12 +1,13 @@
 <template>
   <div v-if="isVisible" class="h-[100dvh] flex flex-col items-center justify-around bg-[#17BECD]">
     <div class="container items-center px-10 content">
-      <div class="flex justify-center logo-container gap-x-5">
+      <div class="flex justify-center mt-2 logo-container gap-x-5">
         <img src="/landing.svg" class="w-7/12" alt="Landing Logo" />
       </div>
 
       <div>
         <div>
+          <img src="/logo.png" class="w-20 mb-3" alt="Domus Logo" />
           <h2 class="!text-white text-3xl font-bold">Leve felicidade <br />para o mundo</h2>
         </div>
 
@@ -23,10 +24,10 @@
           Visualizar pontos de coleta
           <ChevronRight class="inline-block ml-1 size-7" />
         </button> -->
-        <div class="flex items-center justify-center w-full mt-10 mb-4 text-sm gap-x-2">
-          <p class="text-white">Desenvolvido com ❤️ para </p>
+        <!-- <div class="flex items-center justify-center w-full mt-12 mb-4 text-sm gap-x-2">
+          <p class="text-white">Desenvolvido com ❤️ para</p>
           <img src="/logo.png" class="w-16 -top-1" alt="Domus Logo" />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -57,17 +58,19 @@
 </script>
 
 <style scoped>
-.loader {
-  width: 50px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: 
-    radial-gradient(farthest-side,#fff 94%,#0000) top/8px 8px no-repeat,
-    conic-gradient(#0000 30%,#fff);
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
-  animation: l13 1s infinite linear;
-}
-@keyframes l13{ 
-  100%{transform: rotate(1turn)}
-}
+  .loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(farthest-side, #fff 94%, #0000) top/8px 8px no-repeat,
+      conic-gradient(#0000 30%, #fff);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+    animation: l13 1s infinite linear;
+  }
+  @keyframes l13 {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
 </style>
