@@ -75,8 +75,8 @@
     const isMobile = window.innerWidth <= 650
 
     map = new google.maps.Map(mapDiv.value, {
-      center: { lat: -29.1, lng: -51.18 },
-      zoom: isMobile ? 12.5 : 14,
+      center: { lat: -29.17, lng: -51.185 },
+      zoom: isMobile ? 12.8 : 14,
       styles,
       mapTypeControl: false,
       streetViewControl: false,
@@ -85,10 +85,10 @@
       gestureHandling: 'greedy',
       restriction: {
         latLngBounds: {
-          north: -29.1,
-          south: -29.25,
-          west: -51.25,
-          east: -51.1,
+          north: -27.0,
+          south: -33.8,
+          west: -57.7,
+          east: -49.7,
         },
         strictBounds: false,
       },
