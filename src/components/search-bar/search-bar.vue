@@ -25,12 +25,12 @@
         <input
           @focus="$emit('focus')"
           v-model="search"
-          type="text"
+          type="search"
           placeholder="Buscar por pontos de coleta"
           class="outline-none flex-1 min-w-0 text-[13px] md:text-sm items-center justify-center text-gray-700"
         />
 
-        <button
+        <!-- <button
           @click="toggleFilters"
           class="flex-shrink-0 p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100"
           aria-label="Filtros"
@@ -53,7 +53,7 @@
             <circle cx="16" cy="12" r="2" />
             <circle cx="12" cy="18" r="2" />
           </svg>
-        </button>
+        </button> -->
       </div>
 
       <transition name="slide-fade">

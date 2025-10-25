@@ -6,7 +6,7 @@
           <SplashScreenAlternative v-if="showSplash" />
         </transition>
         <DomusMapGoogle
-          :points="state.filteredPoints"
+          :points="filteredPoints"
           :selected-point="selectedPoint"
           v-show="!showSplash"
           class="absolute inset-0 z-0"
@@ -27,12 +27,12 @@
           ref="bottomSheet"
           v-model="open"
           :blocking="false"
-          class="overflow-x-hidden"
+          content-class="overflow-x-hidden overflow-y-auto"
           :snap-points="['13%', '80%']"
           @closed="handleClosed"
           @dragging-up="handleDraggingUp"
         >
-          <section ref="bottomSheetContent">
+          <section ref="bottomSheetContent" class="min-h-screen">
             <div v-if="selectedPoint" class="overflow-x-hidden">
               <CollectionPointDetails :ponto="selectedPoint" @back="handlePointSelected" />
             </div>
@@ -44,17 +44,18 @@
               </h1>
 
               <div :class="{ 'mt-5': !fullSnapped }">
-                <div class="flex flex-col gap-5 mb-6">
-                  <CollectionPointCard
-                    v-for="(point, index) in points"
-                    :key="index"
-                    :ponto="point"
-                    @select="
-                      item => {
-                        handlePointSelected(item)
-                      }
-                    "
-                  />
+                <div class="flex flex-col mb-6">
+                  <div class="space-y-4">
+                    <CollectionPointCard
+                      v-for="point in displayedPoints"
+                      :key="point.id"
+                      :ponto="point"
+                      @select="handlePointSelected"
+                    />
+                    <div v-if="isLoading" class="flex justify-center py-4">
+                      <div class="w-6 h-6 border-2 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,7 +100,7 @@
           </div>
           <div class="relative flex items-center justify-center w-full h-[90vh]">
             <DomusMapGoogleDesktop
-              :points="state.filteredPoints"
+              :points="filteredPoints"
               :selected-point="selectedPoint"
               class="absolute inset-0 z-0"
             />
@@ -111,7 +112,15 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, nextTick, onBeforeMount, onMounted, reactive, ref, watch } from 'vue'
+  import {
+    computed,
+    nextTick,
+    onBeforeMount,
+    onMounted,
+    ref,
+    shallowRef,
+    watch,
+  } from 'vue'
   import BottomSheet from '@douxcode/vue-spring-bottom-sheet'
   import '@douxcode/vue-spring-bottom-sheet/dist/style.css'
   import CollectionPointCard from './components/card/collection-point-card.vue'
@@ -125,24 +134,28 @@
   import SearchBarDesktop from './components/search-bar/search-bar-desktop.vue'
   import CollectionPointDetails from './components/card/collection-point-details.vue'
 
-  const state = reactive({
-    allPoints: [] as any[],
-    filteredPoints: [] as any[],
-  })
+  const allPoints = shallowRef<any[]>([])
+  const filteredPoints = ref<any[]>([])
+  const displayedPoints = ref<any[]>([])
+  const currentPage = ref(0)
+  const pageSize = 10
+  const isLoading = ref(false)
 
   const bottomSheet = ref<InstanceType<typeof BottomSheet>>()
+  const bottomSheetContent = ref<HTMLElement | null>(null)
+  
   const searchStore = useSearchStore()
   const search = computed(() => searchStore.search)
   const bairroLocation = ref(searchStore.bairroSearch)
   const pointsCount = computed(() => points.value.length)
-  const points = computed(() => state.filteredPoints)
-  const bottomSheetContent = ref<HTMLElement | null>(null)
+  const points = computed(() => filteredPoints.value)
 
   const open = ref(false)
   const isMobile = ref(false)
   const fullSnapped = ref(false)
   const showSplash = ref(true)
   const selectedPoint = ref(null)
+  
   const headerText = computed(() => {
     const count = pointsCount.value
     const ponto = count === 1 ? 'ponto' : 'pontos'
@@ -150,12 +163,59 @@
     return `${count} ${ponto} de coleta ${encontrado}`
   })
 
+  const handleScroll = (event: Event) => {
+    const target = event.target as HTMLElement
+    if (!target || isLoading.value) return
+
+    const scrollTop = target.scrollTop
+    const scrollHeight = target.scrollHeight
+    const clientHeight = target.clientHeight
+
+    if (scrollTop + clientHeight >= scrollHeight - 200) {
+      loadMore()
+    }
+  }
+
+  const setupScrollListener = () => {
+    nextTick(() => {
+      const contentEl = document.querySelector('[data-vsbs-scroll]') as HTMLElement
+      if (contentEl) {
+        contentEl.addEventListener('scroll', handleScroll)
+      }
+    })
+  }
+
+  const loadMore = () => {
+    if (isLoading.value) return
+    
+    const start = currentPage.value * pageSize
+    const end = start + pageSize
+    
+    if (start < filteredPoints.value.length) {
+      isLoading.value = true
+      setTimeout(() => {
+        const nextBatch = filteredPoints.value.slice(start, end)
+        displayedPoints.value.push(...nextBatch)
+        currentPage.value++
+        isLoading.value = false
+      }, 300)
+    }
+  }
+
+  const resetPagination = () => {
+    currentPage.value = 0
+    displayedPoints.value = []
+    const scrollContainer = document.querySelector('[data-vsbs-scroll]') as HTMLElement
+    scrollContainer.scrollTop = 0
+    loadMore()
+  }
+
   watch(
     [search, bairroLocation],
     ([searchTerm, bairro]) => {
       const term = searchTerm?.toLowerCase().trim() || ''
       const bairroTerm = bairro?.toLowerCase().trim() || ''
-      state.filteredPoints = state.allPoints.filter(p => {
+      filteredPoints.value = allPoints.value.filter(p => {
         const matchSearch =
           (!term ||
             (p.nome?.toLowerCase() || '').includes(term) ||
@@ -165,6 +225,7 @@
         const matchBairro = !bairroTerm || (p.bairro?.toLowerCase() || '').includes(bairroTerm)
         return matchSearch && matchBairro
       })
+      nextTick(() => resetPagination())
     },
     { immediate: true }
   )
@@ -192,6 +253,8 @@
       open.value = true
       bottomSheet.value?.snapToPoint(1)
       fullSnapped.value = true
+      const scrollContainer = document.querySelector('[data-vsbs-scroll]') as HTMLElement
+      if (scrollContainer) scrollContainer.scrollTop = 0
     } else {
       selectedPoint.value = null
     }
@@ -200,6 +263,7 @@
   const onSplashLeave = async () => {
     await nextTick()
     bottomSheet.value?.open()
+    setTimeout(setupScrollListener, 500)
   }
 
   const onFocus = async () => {
@@ -207,12 +271,8 @@
     open.value = true
     bottomSheet.value?.snapToPoint(1)
     fullSnapped.value = true
-    setTimeout(() => {
-      if (bottomSheetContent.value) {
-        bottomSheetContent.value.scrollTop = 0
-        console.log('oiii')
-      }
-    }, 350)
+    const scrollContainer = document.querySelector('[data-vsbs-scroll]') as HTMLElement
+    scrollContainer.scrollTop = 0
   }
 
   const onClose = async () => {
@@ -220,11 +280,13 @@
     open.value = true
     bottomSheet.value?.snapToPoint(0)
     fullSnapped.value = false
+    nextTick(() => resetPagination())
   }
 
   const handleClosed = () => {
     fullSnapped.value = false
     bottomSheet.value?.close()
+    nextTick(() => resetPagination())
     setTimeout(() => {
       bottomSheet.value?.open()
     }, 500)
@@ -236,8 +298,10 @@
 
   const fetchPoints = async () => {
     try {
-      state.allPoints = await usePontosColetaApi().getAll()
-      state.filteredPoints = state.allPoints.filter(p => p.ativo === true)
+      allPoints.value = await usePontosColetaApi().getAll()
+      filteredPoints.value = allPoints.value.filter(p => p.ativo === true)
+      await nextTick()
+      loadMore()
     } catch (error) {
       console.error('Failed to fetch points data', error)
     }
@@ -252,5 +316,6 @@
       showSplash.value = false
     }, 3500)
     checkIsMobile()
+    setupScrollListener()
   })
 </script>

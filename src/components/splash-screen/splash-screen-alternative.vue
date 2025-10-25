@@ -35,7 +35,6 @@
 
 <script setup>
   import { ref, onMounted } from 'vue'
-  import Particles from '@tsparticles/vue3'
   import { ChevronRight } from 'lucide-vue-next'
 
   const isVisible = ref(true)

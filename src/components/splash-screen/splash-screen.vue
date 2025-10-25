@@ -1,6 +1,6 @@
 <template>
   <div v-if="isVisible" class="splash-screen">
-    <div class="stripes-container"></div>
+    <!-- <div class="stripes-container"></div>
 
     <div class="content">
       <div class="logo-container">
@@ -25,29 +25,29 @@
     <div class="corner-decoration top-left"></div>
     <div class="corner-decoration top-right"></div>
     <div class="corner-decoration bottom-left"></div>
-    <div class="corner-decoration bottom-right"></div>
+    <div class="corner-decoration bottom-right"></div> -->
   </div>
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue'
-  import Particles from '@tsparticles/vue3'
+  // import { ref, onMounted } from 'vue'
+  // import Particles from '@tsparticles/vue3'
 
-  const isVisible = ref(true)
-  const progress = ref(0)
+  // const isVisible = ref(true)
+  // const progress = ref(0)
 
-  onMounted(() => {
-    const interval = setInterval(() => {
-      progress.value += Math.random() * 15
+  // onMounted(() => {
+  //   const interval = setInterval(() => {
+  //     progress.value += Math.random() * 15
 
-      if (progress.value >= 100) {
-        progress.value = 100
-        clearInterval(interval)
+  //     if (progress.value >= 100) {
+  //       progress.value = 100
+  //       clearInterval(interval)
 
-        setTimeout(() => {
-          isVisible.value = false
-        }, 200)
-      }
-    }, 250)
-  })
+  //       setTimeout(() => {
+  //         isVisible.value = false
+  //       }, 200)
+  //     }
+  //   }, 250)
+  // })
 </script>

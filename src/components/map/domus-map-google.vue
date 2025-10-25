@@ -23,11 +23,12 @@
 
     if (!points || !points.length) return
     const bounds = new google.maps.LatLngBounds()
+    const size = 24
 
     points.forEach(ponto => {
       const marker = new google.maps.Marker({
         position: { lat: ponto.latitude, lng: ponto.longitude },
-        icon: { url: '/map-marker.svg', scaledSize: new google.maps.Size(35, 35) },
+        icon: { url: '/map-marker.svg', scaledSize: new google.maps.Size(size, size) },
         map,
         title: ponto.nome,
       })
@@ -74,7 +75,7 @@
     const isMobile = window.innerWidth <= 650
 
     map = new google.maps.Map(mapDiv.value, {
-      center: { lat: -29.2, lng: -51.18 },
+      center: { lat: -29.1, lng: -51.18 },
       zoom: isMobile ? 12.5 : 14,
       styles,
       mapTypeControl: false,
@@ -96,6 +97,32 @@
     emit('mapReady', map)
     directionsService = new google.maps.DirectionsService()
     directionsRenderer = new google.maps.DirectionsRenderer({ map })
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const userLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          }
+          map.setCenter(userLocation)
+
+          new google.maps.Marker({
+            position: userLocation,
+            map,
+            icon: {
+              url: '/marker.png',
+              scaledSize: new google.maps.Size(25, 25),
+            },
+          })
+        },
+        error => {
+          console.warn('Erro ao pegar localização:', error)
+          updateMarkers(props.points, google, directionsService, directionsRenderer)
+        }
+      )
+    }
+
     updateMarkers(props.points, google, directionsService, directionsRenderer)
   })
 </script>

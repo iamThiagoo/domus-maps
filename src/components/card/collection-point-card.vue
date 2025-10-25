@@ -5,7 +5,7 @@
     <div class="px-3 py-4">
       <h2 class="mb-2 text-base font-bold text-slate-800">
         <div class="flex gap-1 h-8 w-8 mb-1.5 items-center justify-center rounded-xl bg-sky-100">
-          <img src="/map-marker.svg" />
+          <img src="/map-marker.svg" loading="lazy" />
         </div>
         {{ ponto.nome }}
       </h2>

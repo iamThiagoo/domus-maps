@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 
 export const useSearchStore = defineStore('search', {
-  persist: false,
   state: () => ({
     search: '',
     bairroSearch: '',
