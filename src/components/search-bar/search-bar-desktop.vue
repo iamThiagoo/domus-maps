@@ -26,7 +26,7 @@
           @focus="$emit('focus')"
           v-model="search"
           type="text"
-          placeholder="Filtre pelo nome do ponto ou bairro de coleta..."
+          placeholder="Filtrar por ponto ou bairro de coleta..."
           class="outline-none flex-1 min-w-0 text-[13px] md:text-sm items-center justify-center text-gray-700"
         />
 

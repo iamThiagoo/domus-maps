@@ -1,7 +1,7 @@
 <template>
   <div class="z-50 px-4">
     <div class="max-w-2xl mx-auto">
-      <div class="flex items-center gap-4 px-4 py-2 bg-[#F8FBFD] rounded-full shadow-lg">
+      <div class="flex items-center gap-1 px-4 py-2 bg-[#F8FBFD] rounded-full shadow-lg">
         <button
           class="flex-shrink-0 p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100"
           aria-label="Buscar"
@@ -26,7 +26,7 @@
           @focus="$emit('focus')"
           v-model="search"
           type="search"
-          placeholder="Filtre pelo nome do ponto ou bairro de coleta..."
+          placeholder="Filtrar por ponto ou bairro de coleta..."
           class="outline-none flex-1 min-w-0 text-[13px] md:text-sm items-center justify-center text-gray-700"
         />
 

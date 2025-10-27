@@ -19,7 +19,11 @@
         <span class="font-semibold">Contato:</span> {{ ponto.telefone ?? 'Não informado' }}
       </p>
 
-      <div class="flex flex-row gap-3">
+      <UBadge icon="i-lucide-recycle" size="md" color="success" variant="soft"
+        >Coletando tampinhas</UBadge
+      >
+
+      <div class="flex flex-row gap-3 mt-4">
         <button
           @click.stop="handleSelect"
           class="w-full bg-white gap-1.5 flex items-center justify-center border border-slate-600 text-slate-600 text-sm font-medium py-2 px-2 rounded-lg transition-colors btn-scale"

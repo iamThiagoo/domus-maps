@@ -8,7 +8,7 @@
       <span class="w-6"></span>
     </header>
 
-    <div class="p-5 space-y-6">
+    <div class="p-5 pb-4 space-y-6">
       <div>
         <h2 class="text-xl font-semibold text-gray-800">{{ ponto.nome }}</h2>
         <p class="mt-1 text-sm leading-relaxed text-gray-600">
@@ -16,6 +16,9 @@
           {{ ponto.endereco }}, {{ ponto.numero_endereco }} - {{ ponto.nome_bairro }},
           {{ ponto.nome_cidade }} ({{ ponto.sigla_estado }})
         </p>
+        <UBadge icon="i-lucide-recycle" size="md" color="success" variant="soft" class="mt-4"
+          >Coletando tampinhas</UBadge
+        >
       </div>
       <USeparator />
       <div>

@@ -24,6 +24,7 @@ declare module 'vue' {
     SplashScreen: typeof import('./src/components/splash-screen/splash-screen.vue')['default']
     SplashScreenAlternative: typeof import('./src/components/splash-screen/splash-screen-alternative.vue')['default']
     UApp: typeof import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_dc3b6770ffc3a581dfab092fa470b9fc/node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
+    UBadge: typeof import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_dc3b6770ffc3a581dfab092fa470b9fc/node_modules/@nuxt/ui/dist/runtime/components/Badge.vue')['default']
     UFormField: typeof import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_dc3b6770ffc3a581dfab092fa470b9fc/node_modules/@nuxt/ui/dist/runtime/components/FormField.vue')['default']
     UInput: typeof import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_dc3b6770ffc3a581dfab092fa470b9fc/node_modules/@nuxt/ui/dist/runtime/components/Input.vue')['default']
     USeparator: typeof import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_dc3b6770ffc3a581dfab092fa470b9fc/node_modules/@nuxt/ui/dist/runtime/components/Separator.vue')['default']

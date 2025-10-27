@@ -53,7 +53,9 @@
                       @select="handlePointSelected"
                     />
                     <div v-if="isLoading" class="flex justify-center py-4">
-                      <div class="w-6 h-6 border-2 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
+                      <div
+                        class="w-6 h-6 border-2 border-blue-500 rounded-full border-t-transparent animate-spin"
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -112,15 +114,7 @@
 </template>
 
 <script setup lang="ts">
-  import {
-    computed,
-    nextTick,
-    onBeforeMount,
-    onMounted,
-    ref,
-    shallowRef,
-    watch,
-  } from 'vue'
+  import { computed, nextTick, onBeforeMount, onMounted, ref, shallowRef, watch } from 'vue'
   import BottomSheet from '@douxcode/vue-spring-bottom-sheet'
   import '@douxcode/vue-spring-bottom-sheet/dist/style.css'
   import CollectionPointCard from './components/card/collection-point-card.vue'
@@ -143,7 +137,7 @@
 
   const bottomSheet = ref<InstanceType<typeof BottomSheet>>()
   const bottomSheetContent = ref<HTMLElement | null>(null)
-  
+
   const searchStore = useSearchStore()
   const search = computed(() => searchStore.search)
   const bairroLocation = ref(searchStore.bairroSearch)
@@ -155,7 +149,7 @@
   const fullSnapped = ref(false)
   const showSplash = ref(true)
   const selectedPoint = ref(null)
-  
+
   const headerText = computed(() => {
     const count = pointsCount.value
     const ponto = count === 1 ? 'ponto' : 'pontos'
@@ -187,10 +181,10 @@
 
   const loadMore = () => {
     if (isLoading.value) return
-    
+
     const start = currentPage.value * pageSize
     const end = start + pageSize
-    
+
     if (start < filteredPoints.value.length) {
       isLoading.value = true
       setTimeout(() => {
