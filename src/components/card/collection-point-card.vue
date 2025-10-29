@@ -5,7 +5,7 @@
     <div class="px-3 py-4">
       <h2 class="mb-2 text-base font-bold text-slate-800">
         <div class="flex gap-1 h-8 w-8 mb-1.5 items-center justify-center rounded-xl bg-sky-100">
-          <img src="/map-marker.svg" loading="lazy" />
+          <img src="/app/map-marker.svg" loading="lazy" />
         </div>
         {{ ponto.nome }}
       </h2>
@@ -35,7 +35,7 @@
           @click.stop="handleOpenGoogleMaps"
           class="w-full bg-white gap-1.5 flex items-center justify-center text-gray-500 text-nowrap border text-sm font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
         >
-          <img src="/google-maps.png" class="size-5" />
+          <img src="/app/google-maps.png" class="size-5" />
           Google Maps
         </button>
       </div>

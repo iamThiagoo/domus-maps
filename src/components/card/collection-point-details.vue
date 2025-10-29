@@ -32,7 +32,7 @@
 
     <div class="flex flex-col gap-5 px-5 pb-6">
       <div class="overflow-hidden bg-white border border-gray-100 shadow-sm rounded-xl">
-        <img src="/domus.webp" alt="Mapa da Domus" class="object-cover w-full h-40 rounded-xl" />
+        <img src="/app/domus.webp" alt="Mapa da Domus" class="object-cover w-full h-40 rounded-xl" />
         <button
           class="w-full py-3 text-sm font-medium text-center transition border-t border-gray-100 text-sky-600 hover:bg-sky-50"
           @click="openMaps"
@@ -68,7 +68,7 @@
         rel="noopener noreferrer"
         class="flex items-center justify-center w-full gap-3 py-3 font-medium text-white transition bg-green-500 shadow-md hover:bg-green-600 rounded-xl"
       >
-        <img src="/whatsapp.webp" class="w-6 h-6" />
+        <img src="/app/whatsapp.webp" class="w-6 h-6" />
         Entrar em contato
       </a>
     </div>

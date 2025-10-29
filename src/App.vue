@@ -75,7 +75,7 @@
               class="grid items-center justify-between w-full grid-cols-2 pb-6 mb-4 border-b border-gray-300"
             >
               <div>
-                <img src="/logo.png" alt="Domus Logo" class="w-24 mb-2" />
+                <img src="/app/logo.png" alt="Domus Logo" class="w-24 mb-2" />
                 <h2 class="mb-0 text-2xl font-semibold text-gray-800">Pontos de Coleta</h2>
                 <div class="flex items-center justify-between text-sm text-gray-500">
                   <span>{{ headerText }}</span>
@@ -200,7 +200,7 @@
     currentPage.value = 0
     displayedPoints.value = []
     const scrollContainer = document.querySelector('[data-vsbs-scroll]') as HTMLElement
-    scrollContainer.scrollTop = 0
+    if (scrollContainer) scrollContainer.scrollTop = 0
     loadMore()
   }
 

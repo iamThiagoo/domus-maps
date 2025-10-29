@@ -28,7 +28,7 @@
     points.forEach(ponto => {
       const marker = new google.maps.Marker({
         position: { lat: ponto.latitude, lng: ponto.longitude },
-        icon: { url: '/map-marker.svg', scaledSize: new google.maps.Size(size, size) },
+        icon: { url: '/app/map-marker.svg', scaledSize: new google.maps.Size(size, size) },
         map,
         title: ponto.nome,
       })

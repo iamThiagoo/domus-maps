@@ -2,11 +2,11 @@
   <div v-if="isVisible" class="h-[100dvh] flex flex-col items-center justify-around bg-[#17BECD]">
     <div class="container items-center px-10 content">
       <div class="flex justify-center mt-2 logo-container gap-x-5">
-        <img src="/landing.svg" class="w-7/12" alt="Landing Logo" />
+        <img src="/app/landing.svg" class="w-7/12" alt="Landing Logo" />
       </div>
       <div>
         <div>
-          <img src="/logo.png" class="w-20 mb-3" alt="Domus Logo" />
+          <img src="/app/logo.png" class="w-20 mb-3" alt="Domus Logo" />
           <h2 class="!text-white text-3xl font-bold">Leve felicidade <br />para o mundo</h2>
         </div>
         <div>
