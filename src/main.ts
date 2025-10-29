@@ -4,7 +4,7 @@ import App from './App.vue'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ui from '@nuxt/ui/vue-plugin'
-import router from './utils/modules/router.ts'
+import router from './utils/modules/router'
 
 const app = createApp(App)
 const pinia = createPinia()
