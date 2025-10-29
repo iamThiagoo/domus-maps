@@ -5,10 +5,10 @@ Este repositório contém o aplicativo Domus Maps — um mapa que mostra pontos 
 ## Screenshots
 
 <p align="center">
-  <img src="public/screenshoots/1.png" alt="Tela 1" width="24%" />
-  <img src="public/screenshoots/2.png" alt="Tela 2" width="24%" />
-  <img src="public/screenshoots/3.png" alt="Tela 3" width="24%" />
-  <img src="public/screenshoots/4.png" alt="Tela 4" width="24%" />
+  <img src="public/screenshots/1.png" alt="Tela 1" width="24%" />
+  <img src="public/screenshots/2.png" alt="Tela 2" width="24%" />
+  <img src="public/screenshots/3.png" alt="Tela 3" width="24%" />
+  <img src="public/screenshots/4.png" alt="Tela 4" width="24%" />
 </p>
 
 ## Tecnologias
