@@ -62,7 +62,6 @@
           <p class="text-sm text-left text-rose-600">fim de semana</p>
         </div>
       </div>
-
       <a
         href="https://api.whatsapp.com/send?phone=5554992642147"
         target="_blank"

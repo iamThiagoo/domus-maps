@@ -3,7 +3,7 @@
     <UApp :toaster="{ position: 'top-center' }">
       <div v-if="isMobile">
         <transition name="fade" appear @after-leave="onSplashLeave">
-          <SplashScreenAlternative v-if="showSplash" />
+          <SplashScreen v-if="showSplash" />
         </transition>
         <DomusMapGoogle
           :points="filteredPoints"
@@ -120,10 +120,10 @@
   import CollectionPointCard from './components/card/collection-point-card.vue'
   import DomusMapGoogle from './components/map/domus-map-google.vue'
   import DomusMapGoogleDesktop from './components/map/domus-map-google-desktop.vue'
-  import SplashScreenAlternative from './components/splash-screen/splash-screen-alternative.vue'
+  import SplashScreen from './components/splash-screen/splash-screen.vue'
   import SearchBar from './components/search-bar/search-bar.vue'
-  import { useSearchStore } from './store/search'
-  import { usePontosColetaApi } from './api/pontos-coleta'
+  import { useSearchStore } from './utils/store/search'
+  import { usePontosColetaApi } from './utils/api/pontos-coleta'
   import CollectionPointCardDesktop from './components/card/collection-point-card-desktop.vue'
   import SearchBarDesktop from './components/search-bar/search-bar-desktop.vue'
   import CollectionPointDetails from './components/card/collection-point-details.vue'
