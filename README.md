@@ -13,9 +13,7 @@ Este repositório contém o aplicativo Domus Maps — um mapa que mostra pontos 
 
 ## Tecnologias
 
-- Vue 3 w/ Nuxt UI & Tailwind
-- TypeScript
-- Vite
+- Vue 3 w/ TypeScript, Nuxt UI, Tailwind & Vite
 - APIs do Google Maps
 
 ## Rodar Projeto
