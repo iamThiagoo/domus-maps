@@ -111,7 +111,7 @@
             position: userLocation,
             map,
             icon: {
-              url: '/marker.png',
+              url: '/app/marker.png',
               scaledSize: new google.maps.Size(25, 25),
             },
           })
