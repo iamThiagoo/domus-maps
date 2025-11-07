@@ -44,24 +44,51 @@ declare global {
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { ShortcutConfig, ShortcutsConfig, ShortcutsOptions } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.d'
-  import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.d')
+  export type {
+    ShortcutConfig,
+    ShortcutsConfig,
+    ShortcutsOptions,
+  } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.d'
+  import(
+    './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.d'
+  )
   // @ts-ignore
   export type { UseComponentIconsProps } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.d'
-  import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.d')
+  import(
+    './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.d'
+  )
   // @ts-ignore
   export type { UseFileUploadOptions } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.d'
-  import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.d')
+  import(
+    './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.d'
+  )
   // @ts-ignore
-  export type { KbdKey, KbdKeySpecific } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d'
-  import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d')
+  export type {
+    KbdKey,
+    KbdKeySpecific,
+  } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d'
+  import(
+    './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d'
+  )
   // @ts-ignore
-  export type { OverlayOptions, Overlay } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useOverlay.d'
-  import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useOverlay.d')
+  export type {
+    OverlayOptions,
+    Overlay,
+  } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useOverlay.d'
+  import(
+    './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useOverlay.d'
+  )
   // @ts-ignore
-  export type { UseResizableProps, UseResizableReturn } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useResizable.d'
-  import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useResizable.d')
+  export type {
+    UseResizableProps,
+    UseResizableReturn,
+  } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useResizable.d'
+  import(
+    './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useResizable.d'
+  )
   // @ts-ignore
   export type { Toast } from './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useToast.d'
-  import('./node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useToast.d')
+  import(
+    './node_modules/.pnpm/@nuxt+ui@4.1.0_@babel+parse_b883ec8e3b4b4d06b4e1a4d240e3fcc4/node_modules/@nuxt/ui/dist/runtime/composables/useToast.d'
+  )
 }

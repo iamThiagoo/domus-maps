@@ -11,7 +11,8 @@
         </div>
         <div>
           <p class="mt-4 font-normal text-white">
-            Separe e doe lacres, tampinhas, embalagens plásticas e apoie a Casa das Crianças com Câncer da Serra Gaúcha!
+            Separe e doe lacres, tampinhas, embalagens plásticas e apoie a Casa das Crianças com
+            Câncer da Serra Gaúcha!
           </p>
         </div>
         <div class="flex flex-col items-center justify-center w-full mt-8 mb-10">

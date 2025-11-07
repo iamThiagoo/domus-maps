@@ -29,25 +29,92 @@
           placeholder="Filtrar por ponto ou bairro de coleta..."
           class="outline-none flex-1 min-w-0 text-[13px] md:text-sm items-center justify-center text-gray-700"
         />
+
+        <button
+          @click="toggleFilters"
+          class="flex-shrink-0 p-2 text-gray-500 transition-colors rounded-full hover:bg-gray-100"
+          aria-label="Filtros"
+        >
+          <BadgeInfo class="size-6 text-sky-500" />
+        </button>
       </div>
 
       <transition name="slide-fade">
-        <div v-if="showFilters" class="mt-4 bg-white rounded-2xl !z-50 shadow-lg px-5 pt-5 pb-2">
-          <UFormField label="Bairro" class="w-full mb-4 text-gray-600 outline-none">
-            <UInput placeholder="Digite o bairro" class="w-full" v-model="bairroLocation" />
-          </UFormField>
-          <button
-            @click="applyFilters"
-            class="w-full py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700 btn-scale"
-          >
-            Aplicar Filtros
-          </button>
-          <button
-            @click="resetFilters"
-            class="w-full py-2 my-2 text-sm font-medium transition-colors rounded-lg text-slate-800 btn-scale"
-          >
-            Resetar Filtros
-          </button>
+        <div
+          v-if="showFilters"
+          class="mt-4 bg-white rounded-2xl !z-50 max-h-[70vh] text-xs !overflow-y-auto shadow-lg px-5 pt-5 pb-2"
+        >
+          <h2 class="font-semibold text-lg">Sobre o Projeto Re.Ciclo</h2>
+          <img src="/app/image.png" alt="Recycle Logo" class="w-full my-4" />
+          <p>
+            O objetivo do <strong>Projeto Re.Ciclo</strong>, criado pela <strong>DOMUS</strong>, é
+            arrecadar, coletar e vender esses materiais para recicladoras. Os valores arrecadados
+            têm destino certo! Eles são direcionados:
+          </p>
+
+          <ul class="list-disc list-inside mt-2">
+            <li>À manutenção da casa, para que as despesas fiquem sempre em dia;</li>
+            <li>Na compra de medicamentos;</li>
+            <li>Ao pagamento de consultas com especialistas;</li>
+            <li>Ao pagamento de exames especiais.</li>
+          </ul>
+
+          <p class="mt-2">
+            Todos os valores visam melhorar os serviços prestados às nossas crianças e adolescentes
+            com câncer e suas famílias, durante e após o tratamento.
+          </p>
+
+          <h3 class="mt-4 font-semibold text-lg">Como ajudar</h3>
+          <p class="mt-1">
+            Primeiro, comece por você e depois, espalhe essa corrente de empatia, solidariedade e
+            consciência ambiental para sua família, amigos e vizinhos! Compartilhe o Projeto
+            Re.Ciclo com a comunidade!
+          </p>
+
+          <ul class="list-disc list-inside mt-2">
+            <li>
+              Junte materiais plásticos e lacres de alumínio das latinhas! Traga até a Domus ou leve
+              até o ponto de coleta mais próximo de você!
+            </li>
+            <li>
+              Além de juntar os materiais, torne-se um ponto de coleta! Para isso, solicite a caixa
+              de coleta e o material educativo da campanha!
+            </li>
+          </ul>
+
+          <h3 class="mt-4 font-semibold text-lg">Códigos dos materiais plásticos que aceitamos</h3>
+          <ul class="list-disc list-inside my-3">
+            <li>PP (P5 ou somente 5)</li>
+            <li>PEAD (P2 ou somente 2)</li>
+            <li>PVC (P3 ou somente 3)</li>
+            <li>PEBD (P4 ou somente 4)</li>
+          </ul>
+
+          <p class="mt-2">
+            <strong>ATENÇÃO:</strong> confira se a embalagem que deseja enviar apresenta um dos
+            códigos acima. No caso de dúvidas, envie para avaliarmos.
+          </p>
+
+          <h3 class="mt-4 font-semibold text-lg">Exemplos de materiais</h3>
+          <ul class="list-disc list-inside my-3">
+            <li>Tampinhas plásticas: refrigerante, água mineral, maionese, etc.</li>
+            <li>
+              Embalagens com tampa: requeijão, margarina, sorvete, amaciante, água sanitária, água
+              oxigenada, sabonete líquido, sabonete íntimo, etc.
+            </li>
+          </ul>
+
+          <h3 class="mt-4 font-semibold text-lg">
+            Tipos de materiais que <span class="text-red-600 font-bold">NÃO</span> aceitamos
+          </h3>
+          <ul class="list-disc list-inside">
+            <li>Acrílico</li>
+            <li>Metal</li>
+            <li>Cartelas de medicamentos</li>
+            <li>Lacres plásticos</li>
+            <li>Tampas de metal</li>
+            <li>Cortiça</li>
+          </ul>
         </div>
       </transition>
     </div>
@@ -57,6 +124,7 @@
 <script setup lang="ts">
   import { ref, watch, nextTick } from 'vue'
   import { useSearchStore } from '../../utils/store/search'
+  import { BadgeInfo, Recycle } from 'lucide-vue-next'
 
   const showFilters = ref(false)
   const searchStore = useSearchStore()
