@@ -42,7 +42,7 @@
       <transition name="slide-fade">
         <div
           v-if="showFilters"
-          class="mt-4 bg-white rounded-2xl !z-50 max-h-[70vh] text-xs !overflow-y-auto shadow-lg px-5 pt-5 pb-2"
+          class="mt-4 bg-white rounded-2xl !z-50 max-h-[58vh] text-xs !overflow-y-auto shadow-lg px-5 pt-5 pb-2"
         >
           <h2 class="font-semibold text-lg">Sobre o Projeto Re.Ciclo</h2>
           <img src="/app/image.png" alt="Recycle Logo" class="w-full my-4" />
