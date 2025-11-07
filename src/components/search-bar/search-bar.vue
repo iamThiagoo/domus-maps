@@ -124,7 +124,7 @@
 <script setup lang="ts">
   import { ref, watch, nextTick } from 'vue'
   import { useSearchStore } from '../../utils/store/search'
-  import { BadgeInfo, Recycle } from 'lucide-vue-next'
+  import { BadgeInfo } from 'lucide-vue-next'
 
   const showFilters = ref(false)
   const searchStore = useSearchStore()
@@ -160,18 +160,5 @@
     await nextTick()
     showFilters.value = !showFilters.value
     if (showFilters.value) emit('toggle-filters')
-  }
-
-  const applyFilters = () => {
-    showFilters.value = false
-    emit('focus')
-  }
-
-  const resetFilters = () => {
-    search.value = ''
-    bairroLocation.value = ''
-    searchStore.clearSearch()
-    searchStore.clearBairroSearch()
-    toggleFilters()
   }
 </script>
