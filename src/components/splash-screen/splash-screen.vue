@@ -11,7 +11,7 @@
         </div>
         <div>
           <p class="mt-4 font-normal text-white">
-            Visite pontos de coleta Domus e ajuda a mudar o dia de muitas crianças.
+            Visite um ponto de coleta Domus e faça a diferença
           </p>
         </div>
         <div class="flex flex-col items-center justify-center w-full mt-8 mb-10">
