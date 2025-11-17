@@ -24,14 +24,14 @@
       <div class="flex flex-row gap-3 mt-4">
         <button
           @click.stop="handleSelect"
-          class="w-full bg-white gap-1.5 flex items-center justify-center border border-slate-600 text-slate-600 text-xs font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
+          class="w-full cursor-pointer bg-white gap-1.5 flex items-center justify-center border border-slate-600 text-slate-600 text-xs font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
         >
           <Map class="size-5 text-slate-600" />
           Selecionar
         </button>
         <button
           @click.stop="handleOpenGoogleMaps"
-          class="w-full bg-white gap-1.5 flex items-center justify-center text-gray-500 text-nowrap border text-xs font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
+          class="w-full cursor-pointer bg-white gap-1.5 flex items-center justify-center text-gray-500 text-nowrap border text-xs font-medium py-2 px-2 rounded-lg transition-colors btn-scale"
         >
           <img src="/app/google-maps.png" class="size-5" />
           Google Maps
